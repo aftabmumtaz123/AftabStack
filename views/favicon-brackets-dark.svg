@@ -1,0 +1,9 @@
+<!-- save as favicon-brackets-dark.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="code brackets">
+  <circle cx="32" cy="32" r="30" fill="#0f1724"/>
+  <g fill="#fff" transform="translate(0,0)">
+    <path d="M20 26l-6 6 6 6" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <path d="M44 26l6 6-6 6" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <text x="32" y="38" font-family="monospace" font-size="8" text-anchor="middle" fill="#fff" style="font-weight:700"> </text>
+  </g>
+</svg>
