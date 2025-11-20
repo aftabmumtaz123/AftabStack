@@ -1,0 +1,27 @@
+<header class="sticky top-0 z-50 bg-white/80 backdrop-blur shadow">
+  <nav class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+    <a href="/" class="text-2xl font-bold text-indigo-600">AftabStack</a>
+    <div class="hidden md:flex space-x-6 font-medium">
+      <% pages.forEach(p=>{ %>
+      <a href="/<%= p.slug %>" class="hover:text-indigo-600"
+        ><%= p.title %></a
+      >
+      <% }) %>
+      <a href="/#projects" class="hover:text-indigo-600">Projects</a>
+      <a href="/#contact" class="hover:text-indigo-600">Contact</a>
+    </div>
+    <button id="mob-btn" class="md:hidden text-2xl">☰</button>
+  </nav>
+  <div id="mob-menu" class="hidden md:hidden px-6 pb-4 space-y-2">
+    <a href="/#home" class="block">Home</a>
+    <a href="/#about" class="block">About</a>
+    <a href="/#services" class="block">Services</a>
+    <a href="/#projects" class="block">Projects</a>
+    <a href="/#contact" class="block">Contact</a>
+  </div>
+</header>
+<script>
+  const btn = document.getElementById("mob-btn"),
+    menu = document.getElementById("mob-menu");
+  btn.onclick = () => menu.classList.toggle("hidden");
+</script>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../partials/head',{title:'Dashboard'}) %>
+<body class="bg-gray-100">
+<%- include('../partials/adminNav') %>
+<div class="max-w-6xl mx-auto p-6">
+  <div class="flex justify-between items-center mb-6">
+    <h1 class="text-2xl font-semibold">Projects</h1>
+    <a href="/api/admin/projects/new" class="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700">+ Add Project</a>
+  </div>
+
+  <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <% projects.forEach(p=>{ %>
+      <div class="bg-white rounded-xl shadow hover:shadow-xl transition">
+        <img src="<%= p.image %>" class="h-48 w-full object-cover rounded-t">
+        <div class="p-4">
+          <h3 class="font-semibold text-lg mb-1"><%= p.title %></h3>
+          <p class="text-gray-600 text-sm mb-3"><%= p.description %></p>
+          <div class="flex flex-wrap gap-1 mb-3">
+            <% p.tech.forEach(t=>{ %><span class="px-2 py-1 bg-indigo-100 text-indigo-700 text-xs rounded"><%= t %></span><% }) %>
+          </div>
+          <div class="flex space-x-2">
+            <a href="/api/admin/projects/edit/<%= p._id %>" class="text-indigo-600 hover:underline">Edit</a>
+            <form action="/api/admin/projects/<%= p._id %>?_method=DELETE" method="POST" class="inline">
+              <button class="text-red-600 hover:underline">Delete</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    <% }) %>
+  </div>
+
+  <canvas id="analytics" class="mt-10"></canvas>
+  <script>
+    fetch('/api/analytics/chart').then(r=>r.json()).then(data=>{
+      new Chart(document.getElementById('analytics'),{
+        type:'line',
+        data:{
+          labels:data.labels,
+          datasets:[
+            {label:'Page hits', data:data.hits, borderColor:'#4f46e5'},
+            {label:'Project clicks', data:data.clicks, borderColor:'#f59e0b'}
+          ]
+        }
+      });
+    });
+  </script>
+</div>
+</body>
+</html>

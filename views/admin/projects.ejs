@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../partials/head',{title:'Dashboard'}) %>
+<div class="max-w-6xl mx-auto p-6">
+  <div class="flex justify-between items-center mb-6">
+    <h1 class="text-2xl font-semibold">Projects</h1>
+    <a href="/api/admin/projects/new" class="bg-indigo-600 text-white px-4 py-2 rounded">+ Add Project</a>
+  </div>
+
+  <table class="w-full bg-white rounded shadow">
+    <thead>
+      <tr class="border-b">
+        <th class="text-left p-4">Image</th>
+        <th class="text-left p-4">Title</th>
+        <th class="text-left p-4">Tech</th>
+        <th class="text-left p-4">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% projects.forEach(p=>{ %>
+        <tr class="border-b">
+          <td class="p-4"><img src="<%= p.image %>" class="h-16 rounded"></td>
+          <td class="p-4"><%= p.title %></td>
+          <td class="p-4"><%= p.tech.join(', ') %></td>
+          <td class="p-4 space-x-2">
+            <a href="/api/admin/projects/edit/<%= p._id %>" class="text-indigo-600">Edit</a>
+            <form action="/api/admin/projects/<%= p._id %>?_method=DELETE" method="POST" class="inline">
+              <button class="text-red-600">Delete</button>
+            </form>
+          </td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+
+  <canvas id="analytics" class="mt-10"></canvas>
+  <script>
+    fetch('/api/analytics/chart').then(r=>r.json()).then(data=>{
+      new Chart(document.getElementById('analytics'),{
+        type:'line',
+        data:{
+          labels:data.labels,
+          datasets:[
+            {label:'Page hits', data:data.hits, borderColor:'#4f46e5'},
+            {label:'Project clicks', data:data.clicks, borderColor:'#f59e0b'}
+          ]
+        }
+      });
+    });
+  </script>
+</div>
+<%- include('../partials/footer') %>

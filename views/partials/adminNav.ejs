@@ -1,0 +1,13 @@
+<header class="sticky top-0 z-40 bg-gray-900 text-white shadow">
+  <nav class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+    <span class="text-xl font-bold">Admin Panel</span>
+    <div class="flex items-center space-x-4">
+      <a href="/api/admin/projects"   class="hover:text-indigo-400">Projects</a>
+      <a href="/api/admin/analytics" class="hover:text-indigo-400">Analytics</a>
+      <a href="/api/admin/pages" class="hover:text-indigo-400">Pages</a>
+      <form action="/api/auth/logout" method="POST" class="inline">
+        <button class="bg-indigo-600 px-3 py-1 rounded hover:bg-indigo-500">Logout</button>
+      </form>
+    </div>
+  </nav>
+</header>

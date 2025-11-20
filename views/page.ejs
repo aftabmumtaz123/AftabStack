@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- Dynamic title for SEO -->
+  <%- include('partials/head', { 
+        title: page.title + ' | Your Name', 
+        description: page.meta?.description || '', 
+        keywords: page.meta?.keywords || '' 
+      }) %>
+
+  <body class="bg-gray-50 min-h-screen flex flex-col">
+    
+    <!-- Navigation -->
+    <%- include('partials/pubNav', { pages }) %>
+
+    <!-- Main Content -->
+    <main class="flex-grow">
+      <% if (page.blocks && page.blocks.length > 0) { %>
+        <% page.blocks.forEach(block => { %>
+          <section class="py-16 md:py-24 max-w-5xl mx-auto px-6">
+            <% if (block.sub) { %>
+              <h1 class="text-4xl md:text-5xl font-bold mb-8 text-gray-900">
+                <%= block.sub %>
+              </h1>
+            <% } %>
+            <% if (block.body) { %>
+              <div class="prose prose-lg max-w-none text-gray-700 leading-relaxed">
+                <%- block.body.replace(/\n/g, '<br>') %>
+                <!-- Or better: use marked or a sanitizer if you allow HTML -->
+              </div>
+            <% } %>
+          </section>
+        <% }) %>
+      <% } else { %>
+        <section class="py-32 text-center">
+          <h2 class="text-3xl font-light text-gray-600">This page is empty.</h2>
+          <p class="mt-4"><a href="/api/admin/pages" class="text-blue-600 hover:underline">Add content in admin →</a></p>
+        </section>
+      <% } %>
+    </main>
+
+    <!-- Footer -->
+    <%- include('partials/footer') %>
+
+  </body>
+</html>

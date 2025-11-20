@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../partials/head',{title:'Analytics'}) %>
+<body class="bg-gray-100">
+<%- include('../partials/adminNav') %>
+<div class="max-w-6xl mx-auto p-6">
+  <h1 class="text-2xl font-semibold mb-6">Analytics</h1>
+  <div class="bg-white rounded-xl shadow p-6">
+    <canvas id="chart"></canvas>
+  </div>
+  <script>
+    fetch('/api/analytics/chart').then(r=>r.json()).then(d=>{
+      new Chart(document.getElementById('chart'),{type:'line',data:{labels:d.labels,datasets:[{label:'Page hits',data:d.hits,borderColor:'#4f46e5'},{label:'Project clicks',data:d.clicks,borderColor:'#f59e0b'}]}});
+    });
+  </script>
+</div>
+</body>
+</html>

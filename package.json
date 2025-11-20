@@ -1,26 +1,47 @@
 {
-  "name": "admin",
+  "name": "aftabstack",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Admin + public portfolio with analytics – Express MongoDB Multer Cloudinary EJS bcrypt JWT",
+  "main": "server.js",
   "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js",
+    "seed": "node scripts/seedAdmin.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aftabmumtaz123/AftabStack.git"
+  },
+  "keywords": [
+    "portfolio",
+    "admin",
+    "cms",
+    "express",
+    "mongodb",
+    "cloudinary"
+  ],
+  "author": "Aftab Mumtaz",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aftabmumtaz123/AftabStack/issues"
+  },
+  "homepage": "https://github.com/aftabmumtaz123/AftabStack#readme",
   "dependencies": {
-    "bcrypt": "^6.0.0",
-    "cloudinary": "^1.41.3",
-    "cookie-parser": "^1.4.7",
+    "bcrypt": "^5.1.1",
+    "chart.js": "^4.4.0",
+    "cloudinary": "^1.41.0",
+    "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
-    "dotenv": "^17.2.3",
-    "ejs": "^3.1.10",
-    "express": "^5.1.0",
+    "dotenv": "^16.6.1",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
     "jsonwebtoken": "^9.0.2",
-    "mongoose": "^8.19.3",
-    "morgan": "^1.10.1",
-    "multer": "^2.0.2",
-    "multer-storage-cloudinary": "^4.0.0"
+    "method-override": "^3.0.0",
+    "mongoose": "^8.0.0",
+    "multer": "^1.4.5-lts.1",
+    "multer-storage-cloudinary": "^4.0.0",
+    "nodemailer": "^6.10.1",
+    "nodemon": "^3.0.1"
   }
 }
